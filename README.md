@@ -65,8 +65,8 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/nextjs-auth-template.git
-cd nextjs-auth-template
+git clone https://github.com/code-dipanshuRaj/full-stack-authentication-system.git
+cd landing-template
 ```
 
 ### 2. Install dependencies
