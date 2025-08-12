@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Full Stack Authentication Template
 
-## Getting Started
+A modern, production-ready authentication template built with **Next.js 14 App Router**, **MongoDB**, and **Tailwind CSS**.  
+Includes user registration, login, email verification, password reset, protected routes, and JWT-based authentication.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- **User Signup & Login**  
+  Secure registration and login with hashed passwords and JWT cookies.
+
+- **Email Verification**  
+  Users must verify their email before accessing protected routes.
+
+- **Forgot & Reset Password**  
+  Send password reset links via email and securely update passwords.
+
+- **Protected Routes**  
+  Middleware-based route protection using JWT cookies.
+
+- **Profile Page**  
+  View user details and logout functionality.
+
+- **Responsive UI**  
+  Styled with Tailwind CSS for a modern, mobile-friendly experience.
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+  app/
+    api/
+      users/
+        signup/           # Signup API route
+        login/            # Login API route
+        logout/           # Logout API route
+        details/          # Get user details (protected)
+        forgot-password/  # Forgot password API
+        set-password/     # Set/reset password API
+        verifyemail/      # Email verification API
+    login/                # Login page
+    signup/               # Signup page
+    profile/              # Profile page
+    forgot-password/      # Forgot password page
+    set-password/         # Set/reset password page
+    verifyemail/          # Email verification page
+  db/
+    connectDB.ts          # MongoDB connection logic
+  helpers/
+    mailer.ts             # Nodemailer email helper
+    decodeToken.ts        # JWT decode helper
+  models/
+    user.model.js         # Mongoose User schema
+  middleware.ts           # Route protection middleware
+  globals.css             # Tailwind & global styles
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/nextjs-auth-template.git
+cd nextjs-auth-template
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file in the root with the following:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+SMTP_HOST=your_smtp_host
+SMTP_PORT=your_smtp_port
+SMTP_USER=your_smtp_user
+SMTP_PASS=your_smtp_pass
+domain=http://localhost:3000
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛡️ Security Notes
 
-## Learn More
+- Passwords are hashed using **bcrypt** before storage.
+- JWT tokens are stored in **httpOnly cookies** for security.
+- All sensitive routes are protected by middleware.
+- Email verification and password reset links are time-limited and securely generated.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📧 Email Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This template uses **Nodemailer** for sending emails.  
+You can use [Mailtrap](https://mailtrap.io/) or any SMTP provider for development/testing.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Update the UI in `/src/app` pages as needed.
+- Extend the user model in `/src/models/user.model.js` for more fields.
+- Adjust middleware logic in `/src/middleware.ts` to fit your route protection needs.
+
+---
+
+## 🙏 Credits
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Nodemailer](https://nodemailer.com/)
